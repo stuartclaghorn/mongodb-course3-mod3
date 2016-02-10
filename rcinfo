@@ -1,0 +1,35 @@
+  def initialize
+    @first_name=fn
+    @last_name=ln
+    @gender=g
+    @birth_year=yr
+    @residence=res
+    @racer_id=id
+  end
+
+  # return a database form of the instance
+  def mongoize
+    {:type=>'RacerInfo' :_id=>@racer_id, :first_name=>@first_name, :last_name=>@last_name, :gender=>@gender, :birth_year=>@birth_year, :residence=>Point.mongoize(@residence)}
+  end
+
+  # return an instance of the class from the database
+  def self.demongoize(params)
+    case params
+    when Hash then RacerInfo.new(params[:racer_id], params[:fn], params[:ln], params[:g], params[:res])
+    else nil
+    end
+  end   
+
+  def self.mongoize(object)
+    case object
+    when RacerInfo then object.mongoize
+    else object
+    end
+  end
+
+  def self.evolve(object)
+    case object
+    when RacerInfo then object.mongoize
+    else object
+    end
+  end

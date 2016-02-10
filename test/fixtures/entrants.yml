@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bin: 
+  secs: 
+  overall: 
+  gender: 
+  type: 
+
+two:
+  bin: 
+  secs: 
+  overall: 
+  gender: 
+  type: 
